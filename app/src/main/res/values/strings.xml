@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">wiid</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="chat_txt_description">default</string>
+    <string name="chat_txt_default">default</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+</resources>

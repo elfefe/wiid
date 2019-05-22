@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:map="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+
+        android:name="com.example.wiid.controllers.fragments.MapsFragment"
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <com.google.android.gms.maps.MapView
+            android:id="@+id/fragment_maps_mapView"
+
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+
+            map:layout_constraintStart_toStartOf="parent"
+            map:layout_constraintTop_toTopOf="parent"
+            map:layout_constraintBottom_toTopOf="@id/fragment_maps_search"
+
+            android:layout_margin="10dp"
+
+            android:background="@drawable/round_corner_input"/>
+
+    <EditText
+            android:id="@+id/fragment_maps_search"
+
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+
+            map:layout_constraintLeft_toLeftOf="parent"
+            map:layout_constraintRight_toRightOf="parent"
+            map:layout_constraintTop_toBottomOf="@id/fragment_maps_mapView"
+            map:layout_constraintBottom_toBottomOf="parent"
+
+            android:layout_margin="10dp"
+
+            android:background="@drawable/round_corner_input"
+
+            android:autofillHints=""
+            android:textAlignment="center"
+            android:hint="Rechercher"
+            android:inputType="text"
+            tools:targetApi="o" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
