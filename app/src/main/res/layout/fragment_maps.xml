@@ -21,7 +21,9 @@
 
             android:layout_margin="10dp"
 
-            android:background="@drawable/round_corner_input"/>
+            android:background="@drawable/round_corner_input"
+
+            android:name="com.google.android.gms.maps.SupportMapFragment"/>
 
     <EditText
             android:id="@+id/fragment_maps_search"

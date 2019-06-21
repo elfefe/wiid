@@ -5,4 +5,6 @@
     <string name="chat_txt_default">default</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="navDrawer_header_connect">connect</string>
+    <string name="navDrawer_button_disconnect">disconnect</string>
 </resources>
