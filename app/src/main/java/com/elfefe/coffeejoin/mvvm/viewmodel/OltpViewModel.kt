@@ -1,14 +1,50 @@
-package com.elfefe.coffeejoin.mvvm.repository
+package com.elfefe.coffeejoin.mvvm.viewmodel
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.liveData
+import androidx.lifecycle.*
+import com.elfefe.coffeejoin.mvvm.repository.ChannelRepository
 import com.elfefe.coffeejoin.oltp.model.ChannelCommunity
-import com.elfefe.coffeejoin.oltp.model.ChannelPrivate
+import kotlinx.coroutines.*
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.FlowCollector
+import kotlinx.coroutines.flow.collect
 
-class OltpViewModel(channelRepository: ChannelRepository): ViewModel() {
-    val allChannelsLivedata: LiveData<List<ChannelCommunity>> = liveData {
-        val data = channelRepository.getAllChannels() // loadUser is a suspend function.
-        emit(data)
+class OltpViewModel(
+    private val channelRepository: ChannelRepository
+) : ViewModel() {
+    private val _allChannelsLivedata: MutableLiveData<List<ChannelCommunity>> = MutableLiveData()
+    private val _channelByNameLivedata: MutableLiveData<ChannelCommunity> = MutableLiveData()
+
+    fun getAllChannels(): LiveData<List<ChannelCommunity>> {
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                channelRepository.getAllChannels().collect() {
+                    _allChannelsLivedata.postValue(it)
+                }
+            } catch (e: Throwable) {
+                println("Exception from the flow: $e")
+            }
+        }
+        return _allChannelsLivedata
+    }
+
+    fun getChannelByName(name: String): LiveData<ChannelCommunity?> {
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                channelRepository.getChannelByName(name).collect() {
+                    _channelByNameLivedata.postValue(it)
+                }
+            } catch (e: Throwable) {
+                println("Exception from the flow: $e")
+            }
+        }
+        return _channelByNameLivedata
+    }
+
+    fun sendChannels(vararg channelCommunity: ChannelCommunity) {
+        channelRepository.sendChannels(channelCommunity)
+    }
+
+    fun sendChannelCommunity(channelCommunity: ChannelCommunity) {
+        channelRepository.sendChannelCommunity(channelCommunity)
     }
 }

@@ -1,4 +1,4 @@
-package com.elfefe.wiid.controllers
+package com.elfefe.coffeejoin.controllers
 
 import android.app.Application
 

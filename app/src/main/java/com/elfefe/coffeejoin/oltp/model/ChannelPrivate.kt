@@ -5,11 +5,11 @@ import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 
 @Entity(
-    tableName = "channel"
+    tableName = "channel_private"
 )
-data class Channel(
-    @PrimaryKey(autoGenerate = true)
-    val id: Long,
-    val name: String,
-    val authors: List<String>
-)
+data class ChannelPrivate(
+    @PrimaryKey
+    override val id: Long,
+    override val name: String,
+    override val authorIds: List<String>) :
+    Channel(id, name, authorIds)

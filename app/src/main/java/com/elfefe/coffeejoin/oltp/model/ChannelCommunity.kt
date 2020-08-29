@@ -1,15 +1,18 @@
 package com.elfefe.coffeejoin.oltp.model
 
 import androidx.room.Entity
-import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
+import androidx.room.TypeConverters
+import com.elfefe.coffeejoin.utility.Converter
 
 @Entity(
-    tableName = "channel_private"
+    tableName = "channel_community"
 )
-data class ChannelPrivate(
+data class ChannelCommunity(
     @PrimaryKey
-    override val id: Long,
-    override val name: String,
-    override val authorIds: List<String>) :
-    Channel(id, name, authorIds)
+    var name: String = "",
+    var latitude: Double = 0.0,
+    var longitude: Double = 0.0,
+    @TypeConverters(Converter::class)
+    var authorIds: ArrayList<String> = arrayListOf()
+)

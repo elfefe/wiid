@@ -11,13 +11,12 @@ import com.elfefe.coffeejoin.utility.rest.OvhService
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import java.util.*
 
-class ApiRepository {
+class RestApiRepository {
     private val _consumerValidationLivedata = MutableLiveData<ConsumerValidation>()
-    val consumerValidationLivedata: LiveData<ConsumerValidation> = _consumerValidationLivedata
 
     private val _containerContentLivedata = MutableLiveData<String>()
-    val containerContentLivedata: LiveData<String> = _containerContentLivedata
 
     private var ck: String = ""
 
@@ -34,18 +33,9 @@ class ApiRepository {
         return _consumerValidationLivedata
     }
 
-    private fun getHash(method: String, url: String): Signature {
-        val timestamp = ping(OVH_TIMESTAMP_URL)
-        val secret = "$APP_SECRET+$ck+$method+$url+$timestamp"
-        val sha1 = "$1$${SHA1.sha1Hash(secret).toLowerCase()}"
-        log("SECRET = $secret")
-        log("SHA1 = $sha1")
-        return Signature(timestamp, sha1)
-    }
-
     fun receiveContainerContent(): LiveData<String> {
         GlobalScope.launch(Dispatchers.IO) {
-            val signature = getHash("GET","${OVH_URL}cloud/+project/$SERVICE_NAME/storage/$CONTAINER_MESSAGERIE")
+            val signature = getHash("GET","${OVH_URL}cloud/project/", "$SERVICE_NAME/storage/$CONTAINER_MESSAGERIE/")
             val headers = mapOf(
                 Pair(XOvh.APPLICATION.type, APP_KEY),
                 Pair(XOvh.TIMESTAMP.type, signature.timestamp),
@@ -56,5 +46,14 @@ class ApiRepository {
             _containerContentLivedata.postValue(containerContent)
         }
         return _containerContentLivedata
+    }
+
+    private fun getHash(method: String, url: String, path: String): Signature {
+        val timestamp = ping(OVH_TIMESTAMP_URL)
+        val secret = "$APP_SECRET+$ck+$method+$url+$path+$timestamp"
+        val sha1 = "$1$${SHA1.sha1Hash(secret).toLowerCase(Locale.ROOT)}"
+        log("SECRET = $secret")
+        log("SHA1 = $sha1")
+        return Signature(timestamp, sha1)
     }
 }

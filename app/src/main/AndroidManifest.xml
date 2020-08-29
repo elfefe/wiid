@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           xmlns:dist="http://schemas.android.com/apk/distribution"
           xmlns:tools="http://schemas.android.com/tools"
-          package="com.elfefe.wiid">
+          package="com.elfefe.coffeejoin">
 
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
@@ -13,6 +13,7 @@
         <dist:module dist:instant="true"/>
 
         <application
+                android:name="com.elfefe.coffeejoin.controllers.BaseApplication"
                 android:allowBackup="true"
                 android:icon="@mipmap/ic_launcher"
                 android:label="@string/app_name"
@@ -25,13 +26,14 @@
                     android:value="@string/google_maps_key"/>
 
             <activity
-                    android:name=".controllers.MainActivity">
+                    android:name="com.elfefe.coffeejoin.controllers.LoginActivity">
                 <intent-filter>
                     <action android:name="android.intent.action.MAIN"/>
-
                     <category android:name="android.intent.category.LAUNCHER"/>
                 </intent-filter>
             </activity>
+
+            <activity android:name=".controllers.MainActivity"/>
         </application>
 
     </manifest>

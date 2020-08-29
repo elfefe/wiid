@@ -1,77 +1,142 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/private_layout"
                                                    android:layout_width="match_parent"
                                                    android:layout_height="match_parent"
-                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
-                                                   xmlns:tools="http://schemas.android.com/tools">
+        android:background="@color/crystal"
+        app:layoutDescription="@xml/fragment_private_scene">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/fragment_private_container"
+    <androidx.constraintlayout.motion.widget.MotionLayout
+            android:id="@+id/private_actuality_layout"
 
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
 
-            android:layout_margin="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="5dp"
 
             android:background="@drawable/round_corner_input"
-    >
 
-        <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/fragment_private_recyclerView"
+            app:layoutDescription="@xml/private_actuality_layout_scene"
+            app:layout_constraintBottom_toTopOf="@id/private_message_layout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
 
-                app:layout_constraintBottom_toTopOf="@id/fragment_private_container_sendText"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+        <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/private_actuality_title_button"
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/fragment_private_container_sendText"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="0dp"
 
-                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/fragment_private_recyclerView"
+                android:background="@drawable/round_corner_input"
+
+                android:text="Personnal history"
+
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/private_actuality_recyclerview"
+
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/private_actuality_title_button" />
 
-                android:padding="5dp">
+    </androidx.constraintlayout.motion.widget.MotionLayout>
 
-            <EditText
-                    android:id="@+id/fragment_private_sendText"
+    <androidx.constraintlayout.motion.widget.MotionLayout
+            android:id="@+id/private_message_layout"
 
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
 
-                    android:autofillHints=""
-                    android:hint="Message"
-                    android:inputType="text"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
 
-                    android:labelFor="@id/fragment_private_sendText"
+            android:background="@drawable/round_corner_input"
 
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toLeftOf="@id/fragment_private_sendImage"
-                    tools:targetApi="o" />
-
-            <ImageButton
-                    android:id="@+id/fragment_private_sendImage"
-
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-
-                    android:src="@mipmap/ic_launcher"
-
-                    android:layout_margin="3dp"
-
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintLeft_toRightOf="@id/fragment_private_sendText" />
+            app:layoutDescription="@xml/private_message_layout_scene"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/private_actuality_layout">
 
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/private_message_title_button"
+                android:layout_width="0dp"
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                android:layout_height="wrap_content"
+                android:background="@drawable/round_corner_input"
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+                android:text="Private message"
+
+                android:theme="@style/Widget.AppCompat.Button.Borderless"
+
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+        <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/private_message_friends_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="Friends"
+                android:textStyle="bold"
+
+                android:theme="@style/Widget.AppCompat.Button.Borderless"
+
+                android:background="@color/crystal"
+
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="@id/private_message_title_button"
+                app:layout_constraintTop_toTopOf="@id/private_message_title_button" />
+
+        <com.stfalcon.chatkit.messages.MessagesList
+                android:id="@+id/private_message_messagelist"
+
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+
+                android:visibility="visible"
+
+                app:layout_constraintBottom_toTopOf="@id/private_message_input"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/private_message_title_button" />
+
+        <com.stfalcon.chatkit.messages.MessageInput
+                android:id="@+id/private_message_input"
+
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+
+                app:inputHint="@string/hint_enter_a_message"
+
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/private_message_messagelist" />
+
+    </androidx.constraintlayout.motion.widget.MotionLayout>
+
+</androidx.constraintlayout.motion.widget.MotionLayout>

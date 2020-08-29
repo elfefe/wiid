@@ -1,4 +1,4 @@
-package com.elfefe.wiid
+package com.elfefe.coffeejoin
 
 import org.junit.Test
 

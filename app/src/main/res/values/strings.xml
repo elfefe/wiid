@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">wiid</string>
+    <string name="app_name">Coffeejoin</string>
     <string name="title_activity_maps">Map</string>
     <string name="chat_txt_description">default</string>
     <string name="chat_txt_default">default</string>
@@ -7,4 +7,9 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="navDrawer_header_connect">connect</string>
     <string name="navDrawer_button_disconnect">disconnect</string>
+    <string name="hint_enter_a_message">Enter a message</string>
+    <string name="login_icon">logo_icon</string>
+    <string name="login_content_description">The application from big pot smoker for big pot smoker !</string>
+    <string name="login_facebook">Facebook</string>
+    <string name="login_google">Google</string>
 </resources>

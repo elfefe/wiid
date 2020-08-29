@@ -1,6 +1,222 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent" android:layout_height="match_parent">
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/motionlayout_main_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layoutDescription="@xml/navigationview_main_scene">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_main_navigation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.1" />
+
+
+    <include
+            android:id="@+id/include"
+
+            layout="@layout/activity_main_nav_header"
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/main_nav_search_friends_edittext"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_marginHorizontal="10dp"
+
+            android:hint="Search friends"
+            android:textAlignment="center"
+
+            app:layout_constraintTop_toBottomOf="@+id/include"
+            tools:layout_editor_absoluteX="10dp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/main_nav_partenaire_textview"
+
+            style="@style/navButtons"
+
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+
+            android:text="Partenaires"
+
+            app:layout_constraintBottom_toTopOf="@id/main_nav_actuality_textview"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/guideline_main_navigation"
+            app:layout_constraintTop_toBottomOf="@id/main_nav_search_friends_edittext" />
+
+    <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/main_nav_actuality_textview"
+
+            style="@style/navButtons"
+
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+
+            android:text="Actuality flow"
+
+
+            app:layout_constraintBottom_toTopOf="@id/main_nav_setting_textview"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/guideline_main_navigation"
+            app:layout_constraintTop_toBottomOf="@id/main_nav_partenaire_textview" />
+
+    <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/main_nav_setting_textview"
+
+            style="@style/navButtons"
+
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+
+            android:text="Settings"
+
+            app:layout_constraintBottom_toTopOf="@id/main_nav_contact_textview"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/guideline_main_navigation"
+            app:layout_constraintTop_toBottomOf="@id/main_nav_actuality_textview" />
+
+    <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/main_nav_contact_textview"
+
+            style="@style/navButtons"
+
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+
+            android:text="Contacts"
+
+            app:layout_constraintBottom_toTopOf="@id/main_nav_avis_textview"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/guideline_main_navigation"
+            app:layout_constraintTop_toBottomOf="@id/main_nav_setting_textview" />
+
+    <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/main_nav_avis_textview"
+
+            style="@style/navButtons"
+
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+
+            android:text="Avis"
+
+            app:layout_constraintBottom_toTopOf="@id/main_nav_parameter_textview"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/guideline_main_navigation"
+            app:layout_constraintTop_toBottomOf="@id/main_nav_contact_textview" />
+
+    <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/main_nav_parameter_textview"
+
+            style="@style/navButtons"
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+
+            android:paddingBottom="10dp"
+
+            android:text="Parameters"
+            android:textStyle="bold"
+
+            app:layout_constraintBottom_toTopOf="@id/main_nav_notification_textview"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/guideline_main_navigation"
+            app:layout_constraintTop_toBottomOf="@id/main_nav_avis_textview" />
+
+    <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/main_nav_notification_textview"
+
+            style="@style/navParameters"
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+
+            android:text="Notifications"
+
+            android:visibility="gone"
+
+            app:layout_constraintBottom_toTopOf="@id/main_nav_help_textview"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/guideline_main_navigation"
+            app:layout_constraintTop_toBottomOf="@id/main_nav_parameter_textview" />
+
+    <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/main_nav_help_textview"
+
+            style="@style/navParameters"
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+
+            android:text="Help"
+
+            android:visibility="gone"
+
+            app:layout_constraintBottom_toTopOf="@id/main_nav_addaccount_textview"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/guideline_main_navigation"
+            app:layout_constraintTop_toBottomOf="@id/main_nav_notification_textview" />
+
+    <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/main_nav_addaccount_textview"
+
+            style="@style/navParameters"
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+
+            android:text="Add an account"
+
+            android:visibility="gone"
+
+            app:layout_constraintBottom_toTopOf="@id/main_nav_billing_textview"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/guideline_main_navigation"
+            app:layout_constraintTop_toBottomOf="@id/main_nav_help_textview" />
+
+    <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/main_nav_billing_textview"
+
+            style="@style/navParameters"
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+
+            android:text="Billings"
+
+            android:visibility="gone"
+
+            app:layout_constraintBottom_toTopOf="@id/main_nav_disconnect_textview"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/guideline_main_navigation"
+            app:layout_constraintTop_toBottomOf="@id/main_nav_addaccount_textview" />
+
+    <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/main_nav_disconnect_textview"
+
+            style="@style/navParameters"
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+
+            android:text="Disconnect"
+
+            android:visibility="gone"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/guideline_main_navigation"
+            app:layout_constraintTop_toBottomOf="@id/main_nav_billing_textview" />
+</androidx.constraintlayout.motion.widget.MotionLayout>

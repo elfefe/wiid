@@ -1,4 +1,4 @@
-package com.elfefe.wiid.controllers
+package com.elfefe.coffeejoin.controllers
 
 import android.Manifest
 import android.content.Context
@@ -10,8 +10,7 @@ import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
-import com.elfefe.go4lunch.util.Shared
-import com.elfefe.wiid.R
+import com.elfefe.coffeejoin.R
 import com.facebook.AccessToken
 import com.facebook.CallbackManager
 import com.facebook.FacebookCallback
@@ -22,6 +21,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FacebookAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -122,6 +122,8 @@ class LoginActivity : AppCompatActivity() {
 
     private fun firebaseAuthWithGoogle(acct: GoogleSignInAccount?) {
         val credential = GoogleAuthProvider.getCredential(acct?.idToken, null)
+
+        println("${credential.provider} ${credential.signInMethod}")
         FirebaseAuth.getInstance().signInWithCredential(credential)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
@@ -169,14 +171,6 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun updateUI(user: FirebaseUser) {
-        getSharedPreferences(Shared.PREFERENCE, Context.MODE_PRIVATE)
-            .edit()
-            .putString(Shared.USER_MAIL, user.email)
-            .putString(Shared.USER_ID, user.uid)
-            .putString(Shared.USER_PICTURE_URL, user.photoUrl?.toString()!!)
-            .putString(Shared.USER_NAME, user.displayName)
-            .apply()
-
         startActivity(Intent(applicationContext, MainActivity::class.java))
     }
 

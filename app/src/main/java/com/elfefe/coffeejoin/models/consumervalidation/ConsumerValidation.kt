@@ -5,70 +5,34 @@ import android.os.Parcelable
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
-class ConsumerValidation : Parcelable {
-    @SerializedName("validationUrl")
-    @Expose
-    var validationUrl: String? = null
+data class ConsumerValidation(
+    val validationUrl: String,
+    val consumerKey: String,
+    val state: String
+) : Parcelable {
+    constructor(parcel: Parcel) : this(
+        parcel.readString()!!,
+        parcel.readString()!!,
+        parcel.readString()!!
+    )
 
-    @SerializedName("consumerKey")
-    @Expose
-    var consumerKey: String? = null
-
-    @SerializedName("state")
-    @Expose
-    var state: String? = null
-
-    protected constructor(`in`: Parcel) {
-        validationUrl =
-            `in`.readValue(String::class.java.classLoader) as String?
-        consumerKey =
-            `in`.readValue(String::class.java.classLoader) as String?
-        state =
-            `in`.readValue(String::class.java.classLoader) as String?
-    }
-
-    /**
-     * No args constructor for use in serialization
-     *
-     */
-    constructor() {}
-
-    /**
-     *
-     * @param validationUrl
-     * @param state
-     * @param consumerKey
-     */
-    constructor(
-        validationUrl: String?,
-        consumerKey: String?,
-        state: String?
-    ) : super() {
-        this.validationUrl = validationUrl
-        this.consumerKey = consumerKey
-        this.state = state
-    }
-
-    override fun writeToParcel(dest: Parcel, flags: Int) {
-        dest.writeValue(validationUrl)
-        dest.writeValue(consumerKey)
-        dest.writeValue(state)
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeString(validationUrl)
+        parcel.writeString(consumerKey)
+        parcel.writeString(state)
     }
 
     override fun describeContents(): Int {
         return 0
     }
 
-    companion object {
-        val CREATOR: Parcelable.Creator<ConsumerValidation> =
-            object : Parcelable.Creator<ConsumerValidation?> {
-                override fun createFromParcel(`in`: Parcel): ConsumerValidation? {
-                    return ConsumerValidation(`in`)
-                }
+    companion object CREATOR : Parcelable.Creator<ConsumerValidation> {
+        override fun createFromParcel(parcel: Parcel): ConsumerValidation {
+            return ConsumerValidation(parcel)
+        }
 
-                override fun newArray(size: Int): Array<ConsumerValidation?> {
-                    return arrayOfNulls(size)
-                }
-            }
+        override fun newArray(size: Int): Array<ConsumerValidation?> {
+            return arrayOfNulls(size)
+        }
     }
 }

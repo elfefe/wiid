@@ -1,4 +1,4 @@
-package com.elfefe.coffeejoin.mvvm
+package com.elfefe.coffeejoin.mvvm.viewmodel
 
 class MessageViewModel {
 }

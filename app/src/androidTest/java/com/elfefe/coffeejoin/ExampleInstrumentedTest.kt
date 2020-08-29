@@ -1,4 +1,4 @@
-package com.elfefe.wiid
+package com.elfefe.coffeejoin
 
 import androidx.test.InstrumentationRegistry
 import androidx.test.runner.AndroidJUnit4

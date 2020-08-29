@@ -1,30 +1,21 @@
-package com.elfefe.wiid.controllers
+package com.elfefe.coffeejoin.controllers
 
-import android.Manifest
-import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Button
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
-import androidx.viewpager.widget.ViewPager
-import com.elfefe.wiid.R
-import com.elfefe.wiid.controllers.adapters.PagerAdapter
-import com.elfefe.wiid.controllers.fragments.CommunityFragment.Companion.newInstance
-import com.elfefe.wiid.controllers.fragments.MapsFragment
-import com.elfefe.wiid.controllers.fragments.PrivateFragment
-import com.elfefe.wiid.utility.PreferenceUtils
-import com.elfefe.wiid.utility.checkPermissions
+import com.elfefe.coffeejoin.R
+import com.elfefe.coffeejoin.controllers.adapters.PagerAdapter
+import com.elfefe.coffeejoin.controllers.fragments.CommunityFragment.Companion.newInstance
+import com.elfefe.coffeejoin.controllers.fragments.MapsFragment
+import com.elfefe.coffeejoin.controllers.fragments.PrivateFragment
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.tabs.TabLayout
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_main_nav_header_connect.*
-import kotlinx.android.synthetic.main.activity_main_nav_header_connect.view.*
 import kotlinx.android.synthetic.main.navigationview_main.*
 import java.util.*
 
@@ -37,6 +28,8 @@ class MainActivity : AppCompatActivity(),
 
         setSupportActionBar(activity_main_toolbar)
         supportActionBar?.setDisplayShowTitleEnabled(false)
+
+        FirebaseAuth.getInstance().currentUser
 
         val drawerLayout =
             findViewById<DrawerLayout>(R.id.activity_main_drawer_layout)

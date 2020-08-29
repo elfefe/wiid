@@ -21,84 +21,82 @@
 
     <ConstraintSet android:id="@+id/actuality">
         <Constraint
-                android:id="@+id/community_actuality_layout"
+                android:id="@+id/private_actuality_layout"
                 motion:layout_constraintEnd_toEndOf="parent"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_marginBottom="5dp"
-                motion:layout_constraintBottom_toTopOf="@id/community_message_layout"
                 android:layout_marginEnd="10dp"
                 android:layout_marginStart="10dp"
                 motion:layout_constraintTop_toTopOf="parent"
                 motion:layout_constraintStart_toStartOf="parent"
-                android:layout_marginTop="10dp" />
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="5dp"
+                motion:layout_constraintBottom_toTopOf="@id/private_message_layout" />
         <Constraint
-                android:id="@+id/community_message_layout"
+                android:id="@+id/private_message_layout"
                 motion:layout_constraintEnd_toEndOf="parent"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                motion:layout_constraintBottom_toBottomOf="parent"
                 android:layout_marginEnd="10dp"
-                motion:layout_constraintTop_toBottomOf="@id/community_actuality_layout"
                 android:layout_marginStart="10dp"
                 motion:layout_constraintStart_toStartOf="parent"
-                android:layout_marginTop="5dp" />
+                android:layout_marginTop="5dp"
+                motion:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginBottom="10dp"
+                motion:layout_constraintTop_toBottomOf="@id/private_actuality_layout" />
     </ConstraintSet>
 
     <ConstraintSet android:id="@+id/both">
         <Constraint
-                android:id="@+id/community_actuality_layout"
+                android:id="@+id/private_actuality_layout"
                 motion:layout_constraintEnd_toEndOf="parent"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_marginBottom="5dp"
-                motion:layout_constraintBottom_toTopOf="@id/community_message_layout"
                 android:layout_marginEnd="10dp"
                 android:layout_marginStart="10dp"
                 motion:layout_constraintTop_toTopOf="parent"
                 motion:layout_constraintStart_toStartOf="parent"
-                android:layout_marginTop="10dp" />
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="5dp"
+                motion:layout_constraintBottom_toTopOf="@id/private_message_layout" />
         <Constraint
-                android:id="@+id/community_message_layout"
+                android:id="@+id/private_message_layout"
+                motion:layout_constraintEnd_toEndOf="parent"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_marginBottom="10dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="5dp"
-
-                motion:layout_constraintBottom_toBottomOf="parent"
-                motion:layout_constraintTop_toBottomOf="@id/community_actuality_layout"
                 motion:layout_constraintStart_toStartOf="parent"
-                motion:layout_constraintEnd_toEndOf="parent" />
+                android:layout_marginTop="5dp"
+                motion:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginBottom="10dp"
+                motion:layout_constraintTop_toBottomOf="@id/private_actuality_layout" />
     </ConstraintSet>
 
     <ConstraintSet android:id="@+id/message">
         <Constraint
-                android:id="@+id/community_actuality_layout"
+                android:id="@+id/private_actuality_layout"
                 motion:layout_constraintEnd_toEndOf="parent"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                motion:layout_constraintBottom_toTopOf="@id/community_message_layout"
                 android:layout_marginEnd="10dp"
                 android:layout_marginStart="10dp"
                 motion:layout_constraintTop_toTopOf="parent"
                 motion:layout_constraintStart_toStartOf="parent"
-                android:layout_marginTop="10dp" />
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="5dp"
+                motion:layout_constraintBottom_toTopOf="@id/private_message_layout" />
         <Constraint
-                android:id="@+id/community_message_layout"
+                android:id="@+id/private_message_layout"
+                motion:layout_constraintEnd_toEndOf="parent"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_marginBottom="10dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="5dp"
-
-                motion:layout_constraintBottom_toBottomOf="parent"
-                motion:layout_constraintTop_toBottomOf="@id/community_actuality_layout"
                 motion:layout_constraintStart_toStartOf="parent"
-                motion:layout_constraintEnd_toEndOf="parent" />
+                android:layout_marginTop="5dp"
+                motion:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginBottom="10dp"
+                motion:layout_constraintTop_toBottomOf="@id/private_actuality_layout" />
     </ConstraintSet>
 </MotionScene>
